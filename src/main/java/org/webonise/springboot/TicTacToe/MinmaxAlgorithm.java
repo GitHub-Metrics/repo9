@@ -1,5 +1,8 @@
-package org.webonise.springboot;
+package org.webonise.springboot.TicTacToe;
 
+
+import org.webonise.springboot.entities.BestMove;
+import org.webonise.springboot.entities.Board;
 
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;
@@ -14,7 +17,7 @@ public class MinmaxAlgorithm implements TicTacToePlayer {
     private static final int DEPTH = 0;
     private static final boolean FLAG = false;
     public static final char PLAYER = 'x';
-    private static final char OPPONENT = 'o';
+    public static final char OPPONENT = 'o';
 
     @Override
     public BestMove getBestMove(Board board) {
@@ -44,8 +47,7 @@ public class MinmaxAlgorithm implements TicTacToePlayer {
                 }
             }
         }
-
-        System.out.println("the value that can get is " + bestScore);
+        bestMove.setValue(bestScore);
         return bestMove;
     }
 
@@ -108,7 +110,7 @@ public class MinmaxAlgorithm implements TicTacToePlayer {
 
     }
 
-    private boolean isMovesLeft(Board board) {
+    public boolean isMovesLeft(Board board) {
         int noOfRows = board.getNumberOfRow();
         int noOfColumns = board.getNumberOfRow();
 
@@ -122,7 +124,7 @@ public class MinmaxAlgorithm implements TicTacToePlayer {
         return false;
     }
 
-    private int evaluate(Board board) {
+    public int evaluate(Board board) {
         int noOfRows = board.getNumberOfRow();
         int noOfColumns = board.getNumberOfRow();
         char currentBoard[][] = board.getBoard();
@@ -159,7 +161,7 @@ public class MinmaxAlgorithm implements TicTacToePlayer {
             }
         }
 
-        if (currentBoard[0][2] == currentBoard[1][1] && currentBoard[1][1] == currentBoard[0][2]) {
+        if (currentBoard[0][2] == currentBoard[1][1] && currentBoard[1][1] == currentBoard[2][0]) {
             if (currentBoard[0][2] == PLAYER) {
                 return +10;
             } else if (currentBoard[0][2] == OPPONENT) {

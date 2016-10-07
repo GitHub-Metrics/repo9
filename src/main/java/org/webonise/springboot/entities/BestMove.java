@@ -1,9 +1,17 @@
-package org.webonise.springboot;
+package org.webonise.springboot.entities;
 
 public class BestMove {
     private int row;
     private int column;
+    private long value;
 
+    public long getValue() {
+        return value;
+    }
+
+    public void setValue(long value) {
+        this.value = value;
+    }
 
     public int getRow() {
         return row;

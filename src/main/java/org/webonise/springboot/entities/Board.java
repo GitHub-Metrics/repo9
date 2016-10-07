@@ -1,4 +1,4 @@
-package org.webonise.springboot;
+package org.webonise.springboot.entities;
 
 
 public class Board {

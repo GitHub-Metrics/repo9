@@ -18,14 +18,15 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/topic/greetings', function (greeting) {
-            showGreeting(JSON.parse(greeting.body).content);
+        stompClient.subscribe('/topic/nextmoves', function (move) {
+            showGreeting(JSON.parse(move.body).content);
         });
     });
 }
 
 function disconnect() {
     if (stompClient != null) {
+        stompClient.send("/app/clearBoard", {},JSON.stringify({'name': $("#name").val()}));
         stompClient.disconnect();
     }
     setConnected(false);
@@ -33,7 +34,7 @@ function disconnect() {
 }
 
 function sendName() {
-    stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
+    stompClient.send("/app/tictactoe", {}, JSON.stringify({'name': $("#name").val()}));
 }
 
 function showGreeting(message) {
