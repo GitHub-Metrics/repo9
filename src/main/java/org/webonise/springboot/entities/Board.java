@@ -1,6 +1,9 @@
 package org.webonise.springboot.entities;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Component()
 public class Board {
     private final int numberOfRow;
     private final int numberOfColumn;

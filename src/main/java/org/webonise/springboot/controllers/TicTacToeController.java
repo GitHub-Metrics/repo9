@@ -1,6 +1,8 @@
 package org.webonise.springboot.controllers;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -11,7 +13,9 @@ import org.webonise.springboot.services.TicTacToeCalculator;
 @Controller
 public class TicTacToeController {
 
-    TicTacToeCalculator ticTacToeCalculator = TicTacToeCalculator.getTicTacToeCalculator();
+    @Autowired
+    @Qualifier("getTicTacToeCalculator")
+    private TicTacToeCalculator ticTacToeCalculator;
 
     @MessageMapping("/tictactoe")
     @SendTo("/topic/nextmoves")

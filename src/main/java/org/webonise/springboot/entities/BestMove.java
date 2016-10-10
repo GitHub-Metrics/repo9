@@ -1,5 +1,8 @@
 package org.webonise.springboot.entities;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class BestMove {
     private int row;
     private int column;

@@ -1,6 +1,8 @@
 package org.webonise.springboot.services;
 
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
 import org.webonise.springboot.TicTacToe.MinmaxAlgorithm;
 import org.webonise.springboot.TicTacToe.TicTacToePlayer;
 import org.webonise.springboot.entities.BestMove;
@@ -13,7 +15,9 @@ import static org.webonise.springboot.TicTacToe.MinmaxAlgorithm.OPPONENT;
 import static org.webonise.springboot.TicTacToe.MinmaxAlgorithm.PLAYER;
 
 //singleton class
+@Service
 public class TicTacToeCalculator {
+
     private Board board;
     private static TicTacToeCalculator ticTacToeCalculator = new TicTacToeCalculator();
 
@@ -23,6 +27,7 @@ public class TicTacToeCalculator {
         fillBoardByDash();
     }
 
+    @Bean("getTicTacToeCalculator")
     public static TicTacToeCalculator getTicTacToeCalculator() {
         return ticTacToeCalculator;
     }

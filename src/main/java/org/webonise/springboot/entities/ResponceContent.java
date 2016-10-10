@@ -1,5 +1,8 @@
 package org.webonise.springboot.entities;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ResponceContent {
 
     private String content;
